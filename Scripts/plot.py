@@ -51,10 +51,11 @@ class Plot:
 
 
 
-    def correlation_analysis(self):
+    def correlation_analysis(self, df):
         """
         Analyze the correlation between numerical features.
         """
+        self.data = df
         print("\nCorrelation Analysis:")
         numerical_features = self.data.select_dtypes(include=['int64', 'float64'])
         correlation_matrix = numerical_features.corr()
@@ -63,10 +64,11 @@ class Plot:
         plt.title("Correlation Matrix")
         plt.show()
 
-    def detect_outliers(self):
+    def detect_outliers(self, df):
         """
         Detect outliers using box plots and calculate their values for numerical features.
         """
+        self.data = df
         print("\nOutlier Detection:")
         numerical_features = self.data.select_dtypes(include=['int64', 'float64']).columns
         for feature in numerical_features:
@@ -89,3 +91,21 @@ class Plot:
             
             print(f"Feature: {feature}")
             print(f"Outliers Detected:\n{outliers[feature].values}")
+        
+    def plot_rfms_distribution(self, df):
+        """Visualize the RFMS distribution for 'good' and 'bad' users."""
+        self.rfms_scores = df
+        if self.rfms_scores is None:
+            raise ValueError("RFMS scores are not calculated. Please run calculate_rfms_score() first.")
+
+        plt.figure(figsize=(10, 6))
+        for risk in ['good', 'bad']:
+            subset = self.rfms_scores[self.rfms_scores['Risk'] == risk]
+            plt.hist(subset['RFMS_Score'], bins=10, alpha=0.7, label=risk)
+        
+        plt.title('RFMS Score Distribution')
+        plt.xlabel('RFMS Score')
+        plt.ylabel('Count')
+        plt.legend()
+        plt.show()
+

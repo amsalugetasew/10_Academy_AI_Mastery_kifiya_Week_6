@@ -7,16 +7,18 @@ class FeatureEngineering:
     def __init__(self, df):
         self.df = df
 
-    def create_aggregate_features(self):
+    def create_aggregate_features(self, df):
         """Creates aggregate features for each customer."""
+        self.df = df
         self.df['TotalTransactionAmount'] = self.df.groupby('CustomerId')['Amount'].transform('sum')
         self.df['AvgTransactionAmount'] = self.df.groupby('CustomerId')['Amount'].transform('mean')
         self.df['TransactionCount'] = self.df.groupby('CustomerId')['TransactionId'].transform('count')
         self.df['StdTransactionAmount'] = self.df.groupby('CustomerId')['Amount'].transform('std')
         return self.df
 
-    def extract_datetime_features(self):
+    def extract_datetime_features(self, df):
         """Extracts date and time features from TransactionStartTime."""
+        self.df = df 
         self.df['TransactionStartTime'] = pd.to_datetime(self.df['TransactionStartTime'])
         self.df['TransactionHour'] = self.df['TransactionStartTime'].dt.hour
         self.df['TransactionDay'] = self.df['TransactionStartTime'].dt.day
@@ -24,9 +26,10 @@ class FeatureEngineering:
         self.df['TransactionYear'] = self.df['TransactionStartTime'].dt.year
         return self.df
 
-    def encode_categorical_variables(self, method='onehot'):
+    def encode_categorical_variables(self,df, method='onehot'):
         """Encodes categorical variables using One-Hot or Label Encoding."""
-        categorical_columns = ['CurrencyCode', 'CountryCode', 'ProviderId', 'ProductId', 'ProductCategory', 'ChannelId']
+        self.df = df
+        categorical_columns = ['ProviderId', 'ProductId', 'ProductCategory', 'ChannelId']
 
         if method == 'onehot':
             encoder = OneHotEncoder(sparse_output=False, drop='first')  # Use sparse_output instead of sparse
@@ -41,8 +44,9 @@ class FeatureEngineering:
 
         return self.df
 
-    def handle_missing_values(self, method='imputation'):
+    def handle_missing_values(self,df, method='imputation'):
         """Handles missing values by imputation or removal."""
+        self.df = df
         if method == 'imputation':
             # Separate numeric and non-numeric columns
             numeric_cols = self.df.select_dtypes(include=['number']).columns
@@ -62,8 +66,9 @@ class FeatureEngineering:
 
         return self.df
 
-    def normalize_or_standardize(self, method='standardize'):
+    def normalize_or_standardize(self,df, method='standardize'):
         """Normalizes or standardizes numerical features."""
+        self.df = df
         numerical_columns = self.df.select_dtypes(include=['float64', 'int64']).columns
 
         if method == 'normalize':

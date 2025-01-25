@@ -21,13 +21,14 @@ class EDA:
         Display summary statistics for numerical features.
         """
         print("\nSummary Statistics:")
-        print(self.data.describe())
+        return self.data.describe()
 
 
-    def identify_missing_values(self):
+    def identify_missing_values(self, df):
         """
         Identify missing values in the dataset.
         """
+        self.data = df
         print("\nMissing Values:")
         missing_values = self.data.isnull().sum()
         print(missing_values[missing_values > 0])
