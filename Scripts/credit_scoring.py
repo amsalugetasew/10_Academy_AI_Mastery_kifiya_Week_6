@@ -63,6 +63,7 @@ class CreditScoring:
         if self.rfms_scores is None:
             raise ValueError("RFMS scores are not calculated. Please run calculate_rfms_score() first.")
         
+        print(self.rfms_scores['RFMS_Score'].min(),self.rfms_scores['RFMS_Score'].mean(), self.rfms_scores['RFMS_Score'].max())
         self.rfms_scores['Risk'] = np.where(self.rfms_scores['RFMS_Score'] >= threshold, 'good', 'bad')
         return self.rfms_scores
 
