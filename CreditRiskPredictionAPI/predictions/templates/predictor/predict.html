@@ -82,94 +82,144 @@
 
         <!-- Row 1 -->
         <div>
-            <label for="Store">Transaction Id:</label>
-            <input type="number" id="Store" name="Store" value="{{ form.Store.value }}">
+            <label for="TransactionId">Transaction Id:</label>
+            <input type="number" id="TransactionId" name="TransactionId" value="{{ form.TransactionId.value }}">
 
-            {% if form.Store.errors %}
-            <div class="error">{{ form.Store.errors }}</div>
-            {% endif %}
-        </div>
-        <div>
-
-            <label for="DayOfWeek">Day of week:</label>
-            <select id="DayOfWeek" name="DayOfWeek">
-                <option value="1" {% if form.DayOfWeek.value=='1' %}selected{% endif %}>first day</option>
-                <option value="2" {% if form.DayOfWeek.value=='2' %}selected{% endif %}>second day</option>
-                <option value="3" {% if form.DayOfWeek.value=='3' %}selected{% endif %}>third day</option>
-                <option value="4" {% if form.DayOfWeek.value=='4' %}selected{% endif %}>fourth day</option>
-                <option value="5" {% if form.DayOfWeek.value=='5' %}selected{% endif %}>fifth day</option>
-                <option value="6" {% if form.DayOfWeek.value=='6' %}selected{% endif %}>sexth day</option>
-                <option value="7" {% if form.DayOfWeek.value=='7' %}selected{% endif %}>seventh day</option>
-            </select>
-            {% if form.DayOfWeek.errors %}
-            <div class="error">{{ form.DayOfWeek.errors }}</div>
+            {% if form.TransactionId.errors %}
+            <div class="error">{{ form.TransactionId.errors }}</div>
             {% endif %}
         </div>
 
         <!-- Row 2 -->
         <div>
-            <label for="Date">Date:</label>
-            <input type="date" id="Date" name="Date" value="{{ form.Date.value }}">
-            {% if form.Date.errors %}
-            <div class="error">{{ form.Date.errors }}</div>
+            <label for="AccountId">Account Id:</label>
+            <input type="number" id="AccountId" name="AccountId" value="{{ form.AccountId.value }}">
+            {% if form.AccountId.errors %}
+            <div class="error">{{ form.AccountId.errors }}</div>
             {% endif %}
         </div>
 
         <!-- Row 3 -->
         <div>
-            <label for="Customers">Customers:</label>
-            <input type="number" id="Customers" name="Customers" value="{{ form.Customers.value }}">
-            {% if form.Customers.errors %}
-            <div class="error">{{ form.Customers.errors }}</div>
+            <label for="SubscriptionId">Subscription Id:</label>
+            <input type="number" id="SubscriptionId" name="SubscriptionId" value="{{ form.SubscriptionId.value }}">
+            {% if form.SubscriptionId.errors %}
+            <div class="error">{{ form.SubscriptionId.errors }}</div>
             {% endif %}
         </div>
         <div>
-            <label for="Open">Open status:</label>
-            <select id="Open" name="Open">
-                <option value="1" {% if form.Open.value=='1' %}selected{% endif %}>Open</option>
-                <option value="0" {% if form.Open.value=='0' %}selected{% endif %}>Closed</option>
-            </select>
-            {% if form.Open.errors %}
-            <div class="error">{{ form.Open.errors }}</div>
-            {% endif %}
-        </div>
-
-        <!-- Row 4 -->
-        <div>
-            <label for="Promo">Promo:</label>
-            <select id="Promo" name="Promo">
-                <option value="1" {% if form.Promo.value=='1' %}selected{% endif %}>Promot</option>
-                <option value="0" {% if form.Promo.value=='0' %}selected{% endif %}>Not Promot</option>
-            </select>
-            {% if form.Promo.errors %}
-            <div class="error">{{ form.Promo.errors }}</div>
-            {% endif %}
-        </div>
-        <div>
-            <label for="StateHoliday">State holiday:</label>
-            <select id="StateHoliday" name="StateHoliday">
-                <option value="0" {% if form.StateHoliday.value=='0' %}selected{% endif %}>Normal</option>
-                <option value="a" {% if form.StateHoliday.value=='a' %}selected{% endif %}>a</option>
-                <option value="b" {% if form.StateHoliday.value=='b' %}selected{% endif %}>b</option>
-                <option value="c" {% if form.StateHoliday.value=='c' %}selected{% endif %}>c</option>
-            </select>
-            {% if form.StateHoliday.errors %}
-            <div class="error">{{ form.StateHoliday.errors }}</div>
+            <label for="CustomerId">Customer Id:</label>
+            <input type="number" id="CustomerId" name="CustomerId" value="{{ form.CustomerId.value }}">
+            {% if form.CustomerId.errors %}
+            <div class="error">{{ form.CustomerId.errors }}</div>
             {% endif %}
         </div>
 
         <!-- Row 5 -->
         <div>
-            <label for="SchoolHoliday">School holiday:</label>
-            <select id="SchoolHoliday" name="SchoolHoliday">
-                <option value="1" {% if form.SchoolHoliday.value=='1' %}selected{% endif %}>School Day</option>
-                <option value="0" {% if form.SchoolHoliday.value=='0' %}selected{% endif %}>Not School Day</option>
+            <label for="ProviderId">Product Id:</label>
+            <select id="ProviderId" name="ProviderId">
+                <option value="1">ProviderId_1</option>
+                <option value="2">ProviderId_2</option>
+                <option value="3">ProviderId_3</option>
+                <option value="4">ProviderId_4</option>
+                <option value="5">ProviderId_5</option>
+                <option value="6">ProviderId_6</option>
             </select>
-            {% if form.SchoolHoliday.errors %}
-            <div class="error">{{ form.SchoolHoliday.errors }}</div>
+            {% if form.ProviderId.errors %}
+            <div class="error">{{ form.ProviderId.errors }}</div>
             {% endif %}
         </div>
 
+        <div>
+            <label for="ProductId">Product Id:</label>
+            <select id="ChannelId" name="ProductId">
+                <option value="1">ProductId_1</option>
+                <option value="2">ProductId_2</option>
+                <option value="3">ProductId_3</option>
+                <option value="4">ProductId_4</option>
+                <option value="5">ProductId_5</option>
+                <option value="6">ProductId_6</option>
+
+                <option value="10">ProductId_10</option>
+                <option value="11">ProductId_11</option>
+                <option value="12">ProductId_12</option>
+                <option value="13">ProductId_13</option>
+                <option value="14">ProductId_14</option>
+                <option value="15">ProductId_15</option>
+            </select>
+            {% if form.ProductId.errors %}
+            <div class="error">{{ form.ProductId.errors }}</div>
+            {% endif %}
+        </div>
+
+        <!-- Row 5 -->
+        <div>
+            <label for="ProductCategory">Product Category:</label>
+            <select id="ProductCategory" name="ProductCategory">
+                <option value="financial_services">financial services</option>
+                <option value="airtime">airtime</option>
+                <option value="utility_bill">utility bill</option>
+                <option value="data_bundles">data bundles</option>
+                <option value="tv">tv</option>
+                <option value="ticket">ticket</option>
+                <option value="movies">movies</option>
+                <option value="transport">transport</option>
+                <option value="other">other</option>
+            </select>
+            {% if form.ProductCategory.errors %}
+            <div class="error">{{ form.ProductCategory.errors }}</div>
+            {% endif %}
+        </div>
+
+        <div>
+            <label for="ChannelId">Channel Id:</label>
+            <select id="ChannelId" name="ChannelId">
+                <option value="1">ChannelId_1</option>
+                <option value="2">ChannelId_2</option>
+                <option value="3">ChannelId_3</option>
+                <option value="5">ChannelId_5</option>
+            </select>
+            {% if form.ChannelId.errors %}
+            <div class="error">{{ form.ChannelId.errors }}</div>
+            {% endif %}
+        </div>
+
+        <!-- Row 5 -->
+        <div>
+            <label for="Amount">Amount:</label>
+            <input type="number" id="Amount" name="Amount" value="{{ form.Amount.value }}">
+            {% if form.Amount.errors %}
+            <div class="error">{{ form.Amount.errors }}</div>
+            {% endif %}
+        </div>
+
+        <!-- Row 5 -->
+        <div>
+            <label for="TransactionStartTime">Transaction Start Time:</label>
+            <input type="date" id="TransactionStartTime" name="TransactionStartTime"
+                value="{{ form.TransactionStartTime.value }}">
+            {% if form.TransactionStartTime.errors %}
+            <div class="error">{{ form.TransactionStartTime.errors }}</div>
+            {% endif %}
+        </div>
+
+        <div>
+            <label for="PricingStrategy">Pricing Strategy:</label>
+            <input type="number" id="PricingStrategy" name="PricingStrategy" value="{{ form.PricingStrategy.value }}">
+            {% if form.PricingStrategy.errors %}
+            <div class="error">{{ form.PricingStrategy.errors }}</div>
+            {% endif %}
+        </div>
+
+        <!-- Row 5 -->
+        <div>
+            <label for="FraudResult">Fraud Result:</label>
+            <input type="number" id="FraudResult" name="FraudResult" value="{{ form.FraudResult.value }}">
+            {% if form.FraudResult.errors %}
+            <div class="error">{{ form.FraudResult.errors }}</div>
+            {% endif %}
+        </div>
         <!-- Submit Button -->
         <button type="submit">Predict</button>
     </form>
