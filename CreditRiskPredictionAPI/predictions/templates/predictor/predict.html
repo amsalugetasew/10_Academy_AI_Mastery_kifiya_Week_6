@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sales Prediction</title>
+    <title>Credit Risk Prediction</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -76,7 +76,7 @@
 </head>
 
 <body>
-    <h1>Sales Prediction</h1>
+    <h1>Credit Risk Prediction</h1>
     <form method="post">
         {% csrf_token %}
 
@@ -225,10 +225,15 @@
     </form>
 
     {% if prediction is not None %}
-    <h2>Predicted Sales: {{ prediction }}</h2>
+    {% if prediction == 1 %}
+    <h2>Cridit Risk: No Risk</h2>
+    {% else %}
+    <h2 style="color: red;">Cridit Risk: High Risk</h2>
+    {% endif %}
     {% elif form.errors %}
     <h2 style="color: red;">There was an error in the form. Please correct it and try again.</h2>
     {% endif %}
+
 
 </body>
 

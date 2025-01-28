@@ -72,21 +72,30 @@ def predict_sales(request):
                 'PricingStrategy', 'FraudResult'
             ])
             features_df['TransactionStartTime'] = pd.to_datetime(features_df['TransactionStartTime'])
-            features_df['TransactionId'] = f"TransactionId_{features_df['TransactionId'][0]}"
-            features_df['SubscriptionId'] = f"SubscriptionId_{features_df['SubscriptionId'][0]}"
-            features_df['AccountId'] = f"AccountId_{features_df['AccountId'][0]}"
-            features_df['CustomerId'] = f"CustomerId_{features_df['CustomerId'][0]}"
-            features_df['ProductId'] = f"ProductId_{features_df['ProductId'][0]}"
+            # t_id = f"TransactionId_{features_df['TransactionId'][0]}"
+            # features_df[t_id] = features_df['TransactionId'][0]
 
+            # a_id = f"SubscriptionId_{features_df['SubscriptionId'][0]}"
+            # features_df[a_id] = features_df['SubscriptionId'][0]
+
+
+            # s_id = f"AccountId_{features_df['AccountId'][0]}"
+            # features_df[s_id] = features_df['AccountId'][0]
+            
+            # c_id = f"CustomerId_{features_df['CustomerId'][0]}"
+            # features_df[c_id] = features_df['CustomerId'][0]
+
+            # p_id = f"ProductId_{features_df['ProductId'][0]}"
+            # features_df[p_id] = features_df['ProductId'][0]
+            
             Product_category = features_df['ProductCategory'].iloc[0] 
-            if Product_category == 'data_bundles':
+            if Product_category == 'data_bundles':    
                 features_df['ProductCategory_data_bundles'] = 1
                 features_df['ProductCategory_financial_services'] = 0
                 features_df['ProductCategory_movies'] = 0
                 features_df['ProductCategory_other'] = 0
                 features_df['ProductCategory_ticket'] = 0
                 features_df['ProductCategory_tv'] = 0
-                features_df['ProductCategory_airtime'] = 0
                 features_df['ProductCategory_utility_bill'] = 0
                 features_df['ProductCategory_transport'] = 0
             elif Product_category == 'financial_services':
@@ -96,7 +105,6 @@ def predict_sales(request):
                 features_df['ProductCategory_other'] = 0
                 features_df['ProductCategory_ticket'] = 0
                 features_df['ProductCategory_tv'] = 0
-                features_df['ProductCategory_airtime'] = 0
                 features_df['ProductCategory_utility_bill'] = 0
                 features_df['ProductCategory_transport'] = 0
             elif Product_category == 'movies':
@@ -106,7 +114,6 @@ def predict_sales(request):
                 features_df['ProductCategory_other'] = 0
                 features_df['ProductCategory_ticket'] = 0
                 features_df['ProductCategory_tv'] = 0
-                features_df['ProductCategory_airtime'] = 0
                 features_df['ProductCategory_utility_bill'] = 0
                 features_df['ProductCategory_transport'] = 0
             elif Product_category == 'other':
@@ -116,7 +123,6 @@ def predict_sales(request):
                 features_df['ProductCategory_other'] = 1
                 features_df['ProductCategory_ticket'] = 0
                 features_df['ProductCategory_tv'] = 0
-                features_df['ProductCategory_airtime'] = 0
                 features_df['ProductCategory_utility_bill'] = 0
                 features_df['ProductCategory_transport'] = 0
             elif Product_category == 'ticket':
@@ -126,7 +132,6 @@ def predict_sales(request):
                 features_df['ProductCategory_other'] = 0
                 features_df['ProductCategory_ticket'] = 1
                 features_df['ProductCategory_tv'] = 0
-                features_df['ProductCategory_airtime'] = 0
                 features_df['ProductCategory_utility_bill'] = 0
                 features_df['ProductCategory_transport'] = 0
             elif Product_category == 'tv':
@@ -136,17 +141,6 @@ def predict_sales(request):
                 features_df['ProductCategory_other'] = 0
                 features_df['ProductCategory_ticket'] = 0
                 features_df['ProductCategory_tv'] = 1
-                features_df['ProductCategory_airtime'] = 0
-                features_df['ProductCategory_utility_bill'] = 0
-                features_df['ProductCategory_transport'] = 0
-            elif Product_category == 'airtime':
-                features_df['ProductCategory_data_bundles'] = 0
-                features_df['ProductCategory_financial_services'] = 0
-                features_df['ProductCategory_movies'] = 0
-                features_df['ProductCategory_other'] = 0
-                features_df['ProductCategory_ticket'] = 0
-                features_df['ProductCategory_tv'] = 0
-                features_df['ProductCategory_airtime'] = 1
                 features_df['ProductCategory_utility_bill'] = 0
                 features_df['ProductCategory_transport'] = 0
             elif Product_category == 'utility_bill':
@@ -156,7 +150,6 @@ def predict_sales(request):
                 features_df['ProductCategory_other'] = 0
                 features_df['ProductCategory_ticket'] = 0
                 features_df['ProductCategory_tv'] = 0
-                features_df['ProductCategory_airtime'] = 0
                 features_df['ProductCategory_utility_bill'] = 1
                 features_df['ProductCategory_transport'] = 0
             else:
@@ -166,124 +159,246 @@ def predict_sales(request):
                 features_df['ProductCategory_other'] = 0
                 features_df['ProductCategory_ticket'] = 0
                 features_df['ProductCategory_tv'] = 0
-                features_df['ProductCategory_airtime'] = 0
                 features_df['ProductCategory_utility_bill'] = 0
                 features_df['ProductCategory_transport'] = 1
             # features_df['ProviderId'] = f"ProductId_{features_df['ProductId'][0]}"
-            Product_id = features_df['ProductId'].iloc[0] 
-            if Product_id == 10:
-                features_df['ProductId_ProductId_10'] = 1
+            Product_id = features_df['ProductId'].iloc[0]
+            
+            if Product_id == 2:
+                features_df['ProductId_ProductId_10']  = 0
                 features_df['ProductId_ProductId_11'] = 0
                 features_df['ProductId_ProductId_12'] = 0
                 features_df['ProductId_ProductId_13'] = 0
                 features_df['ProductId_ProductId_14'] = 0
                 features_df['ProductId_ProductId_15'] = 0
+                features_df['ProductId_ProductId_16'] = 0
+                features_df['ProductId_ProductId_19'] = 0
+                features_df['ProductId_ProductId_2'] = 1
+                features_df['ProductId_ProductId_20'] = 0
+                features_df['ProductId_ProductId_21']  = 0
+                features_df['ProductId_ProductId_22'] = 0
+                features_df['ProductId_ProductId_23'] = 0
+                features_df['ProductId_ProductId_24'] = 0
+                features_df['ProductId_ProductId_27'] = 0
+                features_df['ProductId_ProductId_3'] = 0
+                features_df['ProductId_ProductId_4'] = 0
+                features_df['ProductId_ProductId_5'] = 0
+                features_df['ProductId_ProductId_6'] = 0
+                features_df['ProductId_ProductId_7'] = 0
+                features_df['ProductId_ProductId_8'] = 0
+                features_df['ProductId_ProductId_9'] = 0
+            elif Product_id == 10:
+                features_df['ProductId_ProductId_10']  = 1
+                features_df['ProductId_ProductId_11'] = 0
+                features_df['ProductId_ProductId_12'] = 0
+                features_df['ProductId_ProductId_13'] = 0
+                features_df['ProductId_ProductId_14'] = 0
+                features_df['ProductId_ProductId_15'] = 0
+                features_df['ProductId_ProductId_16'] = 0
+                features_df['ProductId_ProductId_19'] = 0
+                features_df['ProductId_ProductId_2'] = 0
+                features_df['ProductId_ProductId_20'] = 0
+                features_df['ProductId_ProductId_21']  = 0
+                features_df['ProductId_ProductId_22'] = 0
+                features_df['ProductId_ProductId_23'] = 0
+                features_df['ProductId_ProductId_24'] = 0
+                features_df['ProductId_ProductId_27'] = 0
+                features_df['ProductId_ProductId_3'] = 0
+                features_df['ProductId_ProductId_4'] = 0
+                features_df['ProductId_ProductId_5'] = 0
+                features_df['ProductId_ProductId_6'] = 0
+                features_df['ProductId_ProductId_7'] = 0
+                features_df['ProductId_ProductId_8'] = 0
+                features_df['ProductId_ProductId_9'] = 0
             elif Product_id == 11:
-                features_df['ProductId_ProductId_10'] = 0
+                features_df['ProductId_ProductId_10']  = 0
                 features_df['ProductId_ProductId_11'] = 1
                 features_df['ProductId_ProductId_12'] = 0
                 features_df['ProductId_ProductId_13'] = 0
                 features_df['ProductId_ProductId_14'] = 0
                 features_df['ProductId_ProductId_15'] = 0
+                features_df['ProductId_ProductId_16'] = 0
+                features_df['ProductId_ProductId_19'] = 0
+                features_df['ProductId_ProductId_2'] = 0
+                features_df['ProductId_ProductId_20'] = 0
+                features_df['ProductId_ProductId_21']  = 0
+                features_df['ProductId_ProductId_22'] = 0
+                features_df['ProductId_ProductId_23'] = 0
+                features_df['ProductId_ProductId_24'] = 0
+                features_df['ProductId_ProductId_27'] = 0
+                features_df['ProductId_ProductId_3'] = 0
+                features_df['ProductId_ProductId_4'] = 0
+                features_df['ProductId_ProductId_5'] = 0
+                features_df['ProductId_ProductId_6'] = 0
+                features_df['ProductId_ProductId_7'] = 0
+                features_df['ProductId_ProductId_8'] = 0
+                features_df['ProductId_ProductId_9'] = 0
             elif Product_id == 12:
-                features_df['ProductId_ProductId_10'] = 0
+                features_df['ProductId_ProductId_10']  = 0
                 features_df['ProductId_ProductId_11'] = 0
                 features_df['ProductId_ProductId_12'] = 1
                 features_df['ProductId_ProductId_13'] = 0
                 features_df['ProductId_ProductId_14'] = 0
                 features_df['ProductId_ProductId_15'] = 0
+                features_df['ProductId_ProductId_16'] = 0
+                features_df['ProductId_ProductId_19'] = 0
+                features_df['ProductId_ProductId_2'] = 0
+                features_df['ProductId_ProductId_20'] = 0
+                features_df['ProductId_ProductId_21']  = 0
+                features_df['ProductId_ProductId_22'] = 0
+                features_df['ProductId_ProductId_23'] = 0
+                features_df['ProductId_ProductId_24'] = 0
+                features_df['ProductId_ProductId_27'] = 0
+                features_df['ProductId_ProductId_3'] = 0
+                features_df['ProductId_ProductId_4'] = 0
+                features_df['ProductId_ProductId_5'] = 0
+                features_df['ProductId_ProductId_6'] = 0
+                features_df['ProductId_ProductId_7'] = 0
+                features_df['ProductId_ProductId_8'] = 0
+                features_df['ProductId_ProductId_9'] = 0
             elif Product_id == 13:
-                features_df['ProductId_ProductId_10'] = 0
+                features_df['ProductId_ProductId_10']  = 0
                 features_df['ProductId_ProductId_11'] = 0
                 features_df['ProductId_ProductId_12'] = 0
                 features_df['ProductId_ProductId_13'] = 1
                 features_df['ProductId_ProductId_14'] = 0
                 features_df['ProductId_ProductId_15'] = 0
+                features_df['ProductId_ProductId_16'] = 0
+                features_df['ProductId_ProductId_19'] = 0
+                features_df['ProductId_ProductId_2'] = 0
+                features_df['ProductId_ProductId_20'] = 0
+                features_df['ProductId_ProductId_21']  = 0
+                features_df['ProductId_ProductId_22'] = 0
+                features_df['ProductId_ProductId_23'] = 0
+                features_df['ProductId_ProductId_24'] = 0
+                features_df['ProductId_ProductId_27'] = 0
+                features_df['ProductId_ProductId_3'] = 0
+                features_df['ProductId_ProductId_4'] = 0
+                features_df['ProductId_ProductId_5'] = 0
+                features_df['ProductId_ProductId_6'] = 0
+                features_df['ProductId_ProductId_7'] = 0
+                features_df['ProductId_ProductId_8'] = 0
+                features_df['ProductId_ProductId_9'] = 0
             elif Product_id == 14:
-                features_df['ProductId_ProductId_10'] = 0
+                features_df['ProductId_ProductId_10']  = 0
                 features_df['ProductId_ProductId_11'] = 0
                 features_df['ProductId_ProductId_12'] = 0
                 features_df['ProductId_ProductId_13'] = 0
                 features_df['ProductId_ProductId_14'] = 1
                 features_df['ProductId_ProductId_15'] = 0
+                features_df['ProductId_ProductId_16'] = 0
+                features_df['ProductId_ProductId_19'] = 0
+                features_df['ProductId_ProductId_2'] = 0
+                features_df['ProductId_ProductId_20'] = 0
+                features_df['ProductId_ProductId_21']  = 0
+                features_df['ProductId_ProductId_22'] = 0
+                features_df['ProductId_ProductId_23'] = 0
+                features_df['ProductId_ProductId_24'] = 0
+                features_df['ProductId_ProductId_27'] = 0
+                features_df['ProductId_ProductId_3'] = 0
+                features_df['ProductId_ProductId_4'] = 0
+                features_df['ProductId_ProductId_5'] = 0
+                features_df['ProductId_ProductId_6'] = 0
+                features_df['ProductId_ProductId_7'] = 0
+                features_df['ProductId_ProductId_8'] = 0
+                features_df['ProductId_ProductId_9'] = 0
             elif Product_id == 15:
-                features_df['ProductId_ProductId_10'] = 0
+                features_df['ProductId_ProductId_10']  = 0
                 features_df['ProductId_ProductId_11'] = 0
                 features_df['ProductId_ProductId_12'] = 0
                 features_df['ProductId_ProductId_13'] = 0
                 features_df['ProductId_ProductId_14'] = 0
                 features_df['ProductId_ProductId_15'] = 1
+                features_df['ProductId_ProductId_16'] = 0
+                features_df['ProductId_ProductId_19'] = 0
+                features_df['ProductId_ProductId_2'] = 0
+                features_df['ProductId_ProductId_20'] = 0
+                features_df['ProductId_ProductId_21']  = 0
+                features_df['ProductId_ProductId_22'] = 0
+                features_df['ProductId_ProductId_23'] = 0
+                features_df['ProductId_ProductId_24'] = 0
+                features_df['ProductId_ProductId_27'] = 0
+                features_df['ProductId_ProductId_3'] = 0
+                features_df['ProductId_ProductId_4'] = 0
+                features_df['ProductId_ProductId_5'] = 0
+                features_df['ProductId_ProductId_6'] = 0
+                features_df['ProductId_ProductId_7'] = 0
+                features_df['ProductId_ProductId_8'] = 0
+                features_df['ProductId_ProductId_9'] = 0
+            else:
+                features_df['ProductId_ProductId_10']  = 0
+                features_df['ProductId_ProductId_11'] = 0
+                features_df['ProductId_ProductId_12'] = 0
+                features_df['ProductId_ProductId_13'] = 0
+                features_df['ProductId_ProductId_14'] = 0
+                features_df['ProductId_ProductId_15'] = 0
+                features_df['ProductId_ProductId_16'] = 0
+                features_df['ProductId_ProductId_19'] = 0
+                features_df['ProductId_ProductId_2'] = 0
+                features_df['ProductId_ProductId_20'] = 0
+                features_df['ProductId_ProductId_21']  = 0
+                features_df['ProductId_ProductId_22'] = 0
+                features_df['ProductId_ProductId_23'] = 0
+                features_df['ProductId_ProductId_24'] = 0
+                features_df['ProductId_ProductId_27'] = 0
+                features_df['ProductId_ProductId_3'] = 0
+                features_df['ProductId_ProductId_4'] = 0
+                features_df['ProductId_ProductId_5'] = 0
+                features_df['ProductId_ProductId_6'] = 0
+                features_df['ProductId_ProductId_7'] = 0
+                features_df['ProductId_ProductId_8'] = 0
+                features_df['ProductId_ProductId_9'] = 1
 
 
             Provider_id = features_df['ProviderId'].iloc[0] 
             if Provider_id == 1:
-                features_df['ProviderId_1'] = 1
-                features_df['ProviderId_2'] = 0
-                features_df['ProviderId_3'] = 0
-                features_df['ProviderId_4'] = 0
-                features_df['ProviderId_5'] = 0
-                features_df['ProviderId_6'] = 0
-            elif Provider_id == 2:
-                features_df['ProviderId_1'] = 1
-                features_df['ProviderId_2'] = 0
-                features_df['ProviderId_3'] = 0
-                features_df['ProviderId_4'] = 0
-                features_df['ProviderId_5'] = 0
-                features_df['ProviderId_6'] = 0
+                features_df['ProviderId_ProviderId_2'] = 1
+                features_df['ProviderId_ProviderId_3'] = 0
+                features_df['ProviderId_ProviderId_4'] = 0
+                features_df['ProviderId_ProviderId_5'] = 0
+                features_df['ProviderId_ProviderId_6'] = 0
             elif Provider_id == 3:
-                features_df['ProviderId_1'] = 1
-                features_df['ProviderId_2'] = 0
-                features_df['ProviderId_3'] = 0
-                features_df['ProviderId_4'] = 0
-                features_df['ProviderId_5'] = 0
-                features_df['ProviderId_6'] = 0
+                features_df['ProviderId_ProviderId_2'] = 0
+                features_df['ProviderId_ProviderId_3'] = 1
+                features_df['ProviderId_ProviderId_4'] = 0
+                features_df['ProviderId_ProviderId_5'] = 0
+                features_df['ProviderId_ProviderId_6'] = 0
             elif Provider_id == 4:
-                features_df['ProviderId_1'] = 1
-                features_df['ProviderId_2'] = 0
-                features_df['ProviderId_3'] = 0
-                features_df['ProviderId_4'] = 0
-                features_df['ProviderId_5'] = 0
-                features_df['ProviderId_6'] = 0
+                features_df['ProviderId_ProviderId_2'] = 0
+                features_df['ProviderId_ProviderId_3'] = 0
+                features_df['ProviderId_ProviderId_4'] = 1
+                features_df['ProviderId_ProviderId_5'] = 0
+                features_df['ProviderId_ProviderId_6'] = 0
             elif Provider_id == 5:
-                features_df['ProviderId_1'] = 1
-                features_df['ProviderId_2'] = 0
-                features_df['ProviderId_3'] = 0
-                features_df['ProviderId_4'] = 0
-                features_df['ProviderId_5'] = 0
-                features_df['ProviderId_6'] = 0
+                features_df['ProviderId_ProviderId_2'] = 0
+                features_df['ProviderId_ProviderId_3'] = 0
+                features_df['ProviderId_ProviderId_4'] = 0
+                features_df['ProviderId_ProviderId_5'] = 1
+                features_df['ProviderId_ProviderId_6'] = 0
             else:
-                features_df['ProviderId_1'] = 1
-                features_df['ProviderId_2'] = 0
-                features_df['ProviderId_3'] = 0
-                features_df['ProviderId_4'] = 0
-                features_df['ProviderId_5'] = 0
-                features_df['ProviderId_6'] = 0
+                features_df['ProviderId_ProviderId_2'] = 0
+                features_df['ProviderId_ProviderId_3'] = 0
+                features_df['ProviderId_ProviderId_4'] = 0
+                features_df['ProviderId_ProviderId_5'] = 0
+                features_df['ProviderId_ProviderId_6'] = 1
 
 
             channel_id = features_df['ChannelId'].iloc[0] 
-            if channel_id == 1:
-                features_df['ChannelId_1'] = 1
-                features_df['ChannelId_ChannelId_2'] = 0
-                features_df['ChannelId_ChannelId_3'] = 0
-                features_df['ChannelId_ChannelId_5'] = 0
-            elif channel_id == 2:
-                features_df['ChannelId_1'] = 0
+            if channel_id == 2:
                 features_df['ChannelId_ChannelId_2'] = 1
                 features_df['ChannelId_ChannelId_3'] = 0
                 features_df['ChannelId_ChannelId_5'] = 0
             elif channel_id == 3:
-                features_df['ChannelId_1'] = 0
                 features_df['ChannelId_ChannelId_2'] = 0
                 features_df['ChannelId_ChannelId_3'] = 1
                 features_df['ChannelId_ChannelId_5'] = 0
             else:
-                features_df['ChannelId_1'] = 0
                 features_df['ChannelId_ChannelId_2'] = 0
                 features_df['ChannelId_ChannelId_3'] = 0
                 features_df['ChannelId_ChannelId_5'] = 1
             
-            features_df = features_df.drop(columns = ['ChannelId','ChannelId_1','ProductCategory',
-                                                      'ProductId','ProductCategory_airtime','ProviderId'])
+            features_df = features_df.drop(columns = ['ChannelId','ProductCategory',
+                                                      'ProductId','ProviderId'])
             
             features_df['TotalTransactionAmount'] = features_df.groupby('CustomerId')['Amount'].transform('sum')
             features_df['AvgTransactionAmount'] = features_df.groupby('CustomerId')['Amount'].transform('mean')
@@ -376,41 +491,28 @@ def predict_sales(request):
 
             binned_data = woe_df  # Save the bin-level summary
 
-            categorical_columns = ['ProviderId', 'ProductId', 'ProductCategory']
-            numerical_columns = ['Amount', 'TransactionHour', 'TransactionDay', 'TransactionMonth', 'TransactionYear']
+            # # categorical_columns = ['ProviderId', 'ProductId', 'ProductCategory']
+            # numerical_columns = ['Amount', 'TransactionHour', 'TransactionDay', 'TransactionMonth', 'TransactionYear']
 
-            user_data = features_df
-            onehot_encoder = OneHotEncoder(sparse_output=False, drop='first')
-            scaler = StandardScaler()
-            # # Apply One-Hot Encoding to categorical variables
-            # encoded_categorical = onehot_encoder.transform(user_data[categorical_columns])
-            # encoded_categorical_df = pd.DataFrame(encoded_categorical, columns=onehot_encoder.get_feature_names_out(categorical_columns))
-
-            # # Drop original categorical columns and combine with encoded features
-            # user_data = pd.concat([user_data.reset_index(drop=True), encoded_categorical_df], axis=1).drop(columns=categorical_columns)
+            # scaler = StandardScaler()
 
             # # Apply Standardization to numerical variables
-            # user_data[numerical_columns] = scaler.transform(user_data[numerical_columns])
+            # features_df[numerical_columns] = scaler.transform(features_df[numerical_columns])
+           
 
-            # # Result: The user data is now encoded and standardized
-            # print(user_data)
 
 
 
             # categorical_columns = ['TransactionId','SubscriptionId','CustomerId','AccountId','ProviderId', 'ProductId', 'ProductCategory', 'ChannelId']
+
+            features_df[['Amount', 'PricingStrategy', 'FraudResult','TotalTransactionAmount','AvgTransactionAmount', 'Monetary', 'RFMS_Score']] = features_df[['Amount', 'PricingStrategy', 'FraudResult','TotalTransactionAmount','AvgTransactionAmount', 'Monetary', 'RFMS_Score']].astype(float)
+            # print(features_df.select_dtypes(include='object').columns)
+            scaler = StandardScaler()
+            numerical_cols = features_df.select_dtypes(include=['float64', 'int64']).columns
+            features_df[numerical_cols] = scaler.fit_transform(features_df[numerical_cols])
+
             features_df = features_df.drop(columns =['Risk'])
             features_df.set_index('TransactionStartTime', inplace=True)
-            # method='onehot'
-            # if method == 'onehot':
-            #     encoder = OneHotEncoder(sparse_output=False, drop='first')  # Use sparse_output instead of sparse
-            #     encoded = encoder.fit_transform(features_df[categorical_columns])
-            #     encoded_df = pd.DataFrame(encoded, columns=encoder.get_feature_names_out(categorical_columns))
-            #     features_df = pd.concat([features_df.reset_index(drop=True), encoded_df], axis=1).drop(columns=categorical_columns)
-
-            # elif method == 'label':
-            #     for col in categorical_columns:
-            #         le = LabelEncoder()
-            #         features_df[col] = le.fit_transform(features_df[col])
             
             
             # features_df = features_df.drop(columns = ['ChannelId'])
@@ -423,13 +525,42 @@ def predict_sales(request):
             elif method == 'standardize':
                 scaler = StandardScaler()
                 features_df[numerical_columns] = scaler.fit_transform(features_df[numerical_columns])
-            
+        # print(features_df)
+        # print(features_df.shape)
 
 
 
-            
+            columns  = ['TransactionId', 'AccountId', 'SubscriptionId', 'CustomerId', 'Amount',
+            'PricingStrategy', 'FraudResult', 'TotalTransactionAmount',
+            'AvgTransactionAmount', 'TransactionCount', 'StdTransactionAmount',
+            'TransactionHour', 'TransactionDay', 'TransactionMonth',
+            'TransactionYear', 'ProviderId_ProviderId_2', 'ProviderId_ProviderId_3',
+            'ProviderId_ProviderId_4', 'ProviderId_ProviderId_5',
+            'ProviderId_ProviderId_6', 'ProductId_ProductId_10',
+            'ProductId_ProductId_11', 'ProductId_ProductId_12',
+            'ProductId_ProductId_13', 'ProductId_ProductId_14',
+            'ProductId_ProductId_15', 'ProductId_ProductId_16',
+            'ProductId_ProductId_19', 'ProductId_ProductId_2',
+            'ProductId_ProductId_20', 'ProductId_ProductId_21',
+            'ProductId_ProductId_22', 'ProductId_ProductId_23',
+            'ProductId_ProductId_24', 'ProductId_ProductId_27',
+            'ProductId_ProductId_3', 'ProductId_ProductId_4',
+            'ProductId_ProductId_5', 'ProductId_ProductId_6',
+            'ProductId_ProductId_7', 'ProductId_ProductId_8',
+            'ProductId_ProductId_9', 'ProductCategory_data_bundles',
+            'ProductCategory_financial_services', 'ProductCategory_movies',
+            'ProductCategory_other', 'ProductCategory_ticket',
+            'ProductCategory_transport', 'ProductCategory_tv',
+            'ProductCategory_utility_bill', 'ChannelId_ChannelId_2',
+            'ChannelId_ChannelId_3', 'ChannelId_ChannelId_5', 'Recency',
+            'Frequency', 'Monetary', 'No_Subscription', 'No_Account', 'RFMS_Score',
+            'Amount_bins', 'Amount_WoE']
+            new_feature = pd.DataFrame()
+            for cols in columns:
+                new_feature[cols] = features_df[cols].copy()
+            print(new_feature.shape)
             # Make the prediction using the prepared features
-            prediction = model.predict(features_df)[0]  # Assuming the model returns a single value
+            prediction = model.predict(new_feature)[0]  # Assuming the model returns a single value
     else:
         form = SalesDataForm()
 
